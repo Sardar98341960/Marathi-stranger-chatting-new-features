@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="mr">
+ <head><style type="text/css" id="dcoder_stylesheet">/* बेसिक डिझाइन */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* हेडर स्टाइल */
+header {
+    background-color: #3f51b5;
+    color: white;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+/* चॅट बॉक्स */
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#chat-box {
+    width: 80%;
+    max-width: 500px;
+    min-height: 300px;
+    background-color: white;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#messages {
+    font-size: 16px;
+}
+
+/* यूजर इनपुट */
+#user-input {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#message-input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5c6bc0;
+}
+
+/* डार्क मोड */
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+#settings {
+    margin-top: 20px;
+}</style></head> 
+ <body> 
+  <h1> Hello </h1> 
+  <div>
+    This is a html example from Dcoder, 
+   <br> have fun. :) 
+  </div> 
+ 
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marathi Stranger Chat</title>
+    <link rel="stylesheet" href="style.css">
+
+
+    <header>
+        <h1>मराठी अनोळखी व्यक्ती चॅट</h1>
+    </header>
+
+    <section id="chat-container">
+        <div id="chat-box">
+            <div id="messages"></div>
+        </div>
+        <div id="user-input">
+            <input type="text" id="message-input" placeholder="संदेश टाका...">
+            <button onclick="sendMessage()">संदेश पाठवा</button>
+            <button onclick="sendEmoji()">इमोजी पाठवा</button>
+        </div>
+    </section>
+
+    <section id="settings">
+        <button onclick="toggleDarkMode()">डार्क मोड</button>
+        <button onclick="setUsername()">नाव सेट करा</button>
+    </section>
+
+    <script src="chat.js"></script>
+
+<script type="text/javascript" id="dcoder_script">let username = 'Anonymous';
+let isDarkMode = false;
+
+// फिचर: नाव सेट करा
+function setUsername() {
+    const name = prompt("तुमचं नाव काय आहे?");
+    if (name && name.trim() !== '') {
+        username = name.trim();
+        alert(`तुमचं नाव ${username} सेट करण्यात आलं!`);
+    }
+}
+
+// फिचर: संदेश पाठवा
+function sendMessage() {
+    const messageInput = document.getElementById('message-input');
+    const message = messageInput.value.trim();
+
+    if (message) {
+        const messageBox = document.createElement('p');
+        messageBox.innerHTML = `<strong>${username}:</strong> ${message}`;
+        document.getElementById('messages').appendChild(messageBox);
+        messageInput.value = ''; // संदेश पाठवल्यावर इनपुट साफ करा
+    }
+}
+
+// फिचर: इमोजी पाठवा
+function sendEmoji() {
+    const emoji = '😊'; // इमोजी निवडा
+    const messageBox = document.createElement('p');
+    messageBox.innerHTML = `<strong>${username}:</strong> ${emoji}`;
+    document.getElementById('messages').appendChild(messageBox);
+}
+
+// फिचर: डार्क मोड चालू/बंद करा
+function toggleDarkMode() {
+    isDarkMode = !isDarkMode;
+    const body = document.body;
+    const chatBox = document.getElementById('chat-box');
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
+        chatBox.classList.add('dark-mode');
+    } else {
+        body.classList.remove('dark-mode');
+        chatBox.classList.remove('dark-mode');
+    }
+}</script></body></html>
+
